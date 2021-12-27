@@ -6,26 +6,28 @@ class Portfolio {
     }
 
     profit(initialDate, endDate) {
-        let date = parseISO(initialDate)
-        const lastDate = endDate
 
 
-        let stringDate = format(date, 'yyyy-MM-dd')
-        let price = 0
         let profit = 0
 
+        this.stocks.forEach((stock, ix) => {
 
-        while (differenceInCalendarDays(date, parseISO(lastDate))) {
-            this.stocks.forEach((stock, ix) => {
+            let date = parseISO(initialDate)
+            let stringDate = format(date, 'yyyy-MM-dd')
+            let price = stock.price(stringDate)
+
+            while (differenceInCalendarDays(date, parseISO(endDate)) < 1) {
                 const stockPrice = stock.price(stringDate)
-                if (ix > 0) {
-                    profit = price - stockPrice
-                }
+
+                profit += stockPrice - price
                 price = stockPrice
                 date = addDays(date, 1)
-            })
-            return profit
-        }
+                stringDate = format(date, 'yyyy-MM-dd')
+            }
+
+        })
+        return profit
+
     }
 }
 
