@@ -6,8 +6,6 @@ class Portfolio {
     }
 
     profit(initialDate, endDate) {
-
-
         let profit = 0
 
         this.stocks.forEach((stock, ix) => {
@@ -18,6 +16,9 @@ class Portfolio {
 
             while (differenceInCalendarDays(date, parseISO(endDate)) < 1) {
                 const stockPrice = stock.price(stringDate)
+                if (!stockPrice) {
+                    throw new Error('date not found in Stock')
+                }
 
                 profit += stockPrice - price
                 price = stockPrice
