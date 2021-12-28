@@ -18,6 +18,6 @@ Mocks looks like this and based on this structure, the tests where done
 ```
 ## Structure
 
-in /class you can find the Portfolio and Stock Classes with its logic
-in /tests you can find the portfolio unit tests
-in /test/mocks you can find some Stock mocks and a file (mockGenerator.js) to generate them
+* In /class you can find the Portfolio and Stock Classes with its logic
+* In /tests you can find the portfolio unit tests
+* In /test/mocks you can find some Stock mocks and a file (mockGenerator.js) to generate them
